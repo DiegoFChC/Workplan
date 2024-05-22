@@ -1,0 +1,132 @@
+.Card {
+  width: 270px;
+  height: 350px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background 5s ease;
+  position: relative;
+  z-index: 100;
+}
+
+.Card .background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  transition: 1s ease;
+}
+
+.Card .white {
+  background: linear-gradient(71deg, #040106, #d3d2d2af, #08010c);
+}
+
+.Card .blue {
+  background: linear-gradient(71deg, #040106, #4c46f4af, #08010c);
+}
+
+.Card .purple {
+  background: linear-gradient(71deg, #040106, #c145f6af, #08010c);
+}
+
+.Card:hover .background {
+  transform: rotate(45deg);
+}
+
+.Card:hover .content .title {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.Card:hover .content .description p {
+  bottom: 150px;
+  opacity: 1;
+}
+
+.Card:hover .content .description .next {
+  bottom: 70px;
+  opacity: 1;
+}
+
+.Card:hover .content .icon {
+  opacity: 0.1;
+}
+
+.Card .content {
+  width: 269px;
+  height: 349px;
+  padding: 10px;
+  background: linear-gradient(71deg, #040106, #0e0d10, #08010c);
+  border: 2px solid transparent;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 200;
+}
+
+.Card .content .title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 2em;
+  color: rgb(178, 178, 178);
+  transition: .5s ease;
+}
+
+.Card .content .description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Card .content .description p {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  font-weight: 200;
+  position: absolute;
+  bottom: -100px;
+  opacity: 0;
+  transition: .5s ease;
+  transition-delay: .3s;
+}
+
+.Card .content .description .next {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #051937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -100px;
+  z-index: 1000;
+  opacity: 0;
+  transition: .5s ease;
+  transition-delay: .35s;
+}
+
+.Card .content .description .next:hover {
+  transform: scale(110%);
+  background-color: #092856;
+}
+
+.Card .content .icon {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: .3s ease;
+  transition-delay: .5s;
+}
