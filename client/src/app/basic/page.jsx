@@ -1,12 +1,11 @@
 "use client";
 import "./basic.css";
 import Scene from "@/components/scene/Scene";
-import ejemploData from "../../dataModels/basic/data2.json";
 import icon from "../../../public/back.png";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-let defaultModels = ["Mortal Engines", "Mad Max"];
+let defaultModels = ["Mortal Engines", "The maze runner"];
 
 export default function Basic() {
   const [modeSelected, setModeSelected] = useState(false);
@@ -15,8 +14,21 @@ export default function Basic() {
   const [uploadScene, setUploadScene] = useState(false);
   const [optionSelected, setOptionSelected] = useState("");
   const [data, setData] = useState(false);
+  const [basicScenes, setBasicScenes] = useState(null);
+  const [currentSceneSelected, setCurrentSceneSelected] = useState(null);
 
-  function loadData() {
+  useEffect(() => {
+    fetch("http://localhost:1234/basic")
+      .then((res) => res.json())
+      .then((res) => {
+        setBasicScenes(res);
+      });
+  }, []);
+
+  function searchScene() {
+    let myScene = basicScenes.filter((item) => item.titulo == optionSelected);
+    setCurrentSceneSelected(myScene[0]);
+
     if (optionSelected != "" && optionSelected != "Sin selección") {
       setData(true);
     }
@@ -34,6 +46,18 @@ export default function Basic() {
       setUploadScene(false);
       setOptionSelected("");
     }
+  }
+
+  async function proccessData() {
+    let dataToSend = currentSceneSelected;
+
+    fetch("http://localhost:1234/basic", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(dataToSend),
+    }).then((res) => console.log(res));
   }
 
   return (
@@ -125,15 +149,22 @@ export default function Basic() {
               </select>
             </div>
             <div className="basic_question_buttons">
-              <button onClick={() => loadData()}>Cargar</button>
+              <button onClick={() => searchScene()}>Cargar</button>
             </div>
           </div>
         ) : null}
       </div>
-      {data && optionSelected != "Sin selección" && optionSelected != "" ? (
+      {data &&
+      optionSelected != "Sin selección" &&
+      optionSelected != "" &&
+      basicScenes != null &&
+      currentSceneSelected != null ? (
         <div className="container_scene">
-          <h1 className="film_title">{ejemploData.titulo}</h1>
-          <Scene data={ejemploData} />
+          <h1 className="film_title">{currentSceneSelected.titulo}</h1>
+          <Scene data={currentSceneSelected} />
+          <button className="procesar" onClick={() => proccessData()}>
+            Procesar
+          </button>
         </div>
       ) : null}
     </div>

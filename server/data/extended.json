@@ -1,0 +1,22 @@
+[
+  {
+    "titulo": "Desconocido",
+    "numeroActores": 3,
+    "actores": ["nombre1", "nombre2", "nombre3"],
+    "numeroEscenas": 6,
+    "participacion": [
+      [0, 1, 0, 1, 0, 1],
+      [0, 1, 0, 1, 0, 1],
+      [0, 1, 0, 1, 0, 1]
+    ],
+    "precioHora": [3, 5, 7],
+    "duracionEscenas": [1, 2, 3, 4, 5, 6],
+    "ordenEscenas": [1, 2, 3, 4, 5, 6],
+    "numeroParejas": 3,
+    "parejas": [
+      ["nombre", "nombre"],
+      ["nombre", "nombre"],
+      ["nombre", "nombre"]
+    ]
+  }
+]
