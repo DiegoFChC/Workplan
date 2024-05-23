@@ -1,10 +1,10 @@
 {
-  "titulo": "Desconocido",
+  "titulo": "The maze runner",
   "numeroActores": 3,
-  "actores": ["Juan", "Carlos", "Ana"],
+  "actores": ["Dylan O'Brien", "Ki Hong Lee", "Kaya Scodelario"],
   "numeroEscenas": 6,
   "participacion": [[0, 1, 0, 1, 0, 1],
-                    [1, 0, 0, 1, 0, 0],
+                    [1, 0, 1, 1, 0, 0],
                     [0, 1, 0, 0, 1, 0]],
   "precioHora": [3, 5, 7],
   "duracionEscenas": [1, 2, 3, 4, 5, 6],

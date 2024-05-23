@@ -1,0 +1,31 @@
+.avatar {
+  height: 50px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.116);
+  color: white;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.avatar .icon {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+
+.avatar h4 {
+  padding-left: 10px;
+  padding-right: 30px;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+.avatar p {
+  padding-right: 10px;
+  color: rgb(10, 169, 5);
+  font-weight: bold;
+}

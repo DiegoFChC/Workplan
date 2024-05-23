@@ -1,4 +1,4 @@
-.Table {
+.Simple_table {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,22 +6,22 @@
   color: white;
 }
 
-.Table .table_container {
+.Simple_table .table_container {
   display: grid;
   justify-content: center;
   align-items: center;
 }
 
-.Table .item_title {
+.Simple_table .item_title {
   font-weight: bold;
   font-size: 1.5em;
   text-align: center;
   margin-bottom: 30px;
 }
 
-.Table .table_container .item_name {
+.Simple_table .table_container .item_name {
   padding: 5px 0 5px 0;
-  width: 150px;
+  width: 220px;
   grid-column-start: 1;
   grid-column-end: 3;
   border-right: 2px solid rgb(102, 28, 240);
@@ -34,38 +34,23 @@
   }
 }
 
-.Table .table_container .item_name_top {
+.Simple_table .table_container .item_name_top {
   width: 40px;
   text-align: center;
   border-bottom: 2px solid rgb(102, 28, 240);
   border-right: 1px solid rgba(255, 255, 255, 0.082);
 }
 
-.Table .table_container .item_number {
+.Simple_table .table_container .item_number {
   border-bottom: 1px solid rgba(255, 255, 255, 0.082);
   border-right: 1px solid rgba(255, 255, 255, 0.082);
 }
 
-.Table .table_container .zero {
-  width: 100%;
-  height: 100%;
-}
-
-.Table .table_container .one {
+.Simple_table .table_container .number {
   width: 100%;
   height: 100%;
   padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.Table .table_container .one::before {
-  content: "";
-  width: 30px;
-  height: 20px;
-  background-color: rgba(255, 0, 0, 0.228);
-  border-radius: 7px;
-  border: 1px solid red;
-  position: absolute;
 }

@@ -1,4 +1,4 @@
-import 'extended.css'
+import './extended.css'
 
 export default function Extended() {
   return (
