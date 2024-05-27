@@ -1,18 +1,24 @@
 ### Recuperar todos los escenarios básicos
 GET http://localhost:1234/basic
 
+### Recuperar todos los escenarios extendidos
+GET http://localhost:1234/extended
+
 ### Procesar un escenario básico
 POST http://localhost:1234/basic
 Content-Type: application/json
 
 {
-  "title": "The Godfather",
-  "year": 1975,
-  "director": "Francis Ford Coppola",
-  "duration": 175,
-  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
-  "genre": [
-    "Crime",
-    "Drama"
-  ]
+  "titulo": "The maze runner",
+  "numeroActores": 3,
+  "actores": ["Dylan O'Brien", "Ki Hong Lee", "Kaya Scodelario"],
+  "numeroEscenas": 6,
+  "participacion": [
+    [0, 1, 0, 1, 0, 1],
+    [1, 0, 1, 1, 0, 0],
+    [0, 1, 0, 0, 1, 0]
+  ],
+  "precioHora": [3, 5, 7],
+  "duracionEscenas": [1, 2, 3, 4, 5, 6],
+  "ordenEscenas": [1, 2, 3, 4, 5, 6]
 }
