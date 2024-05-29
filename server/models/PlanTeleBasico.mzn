@@ -8,8 +8,6 @@ array [int] of int: Duracion;
 int: numActores = length(ACTORES);
 int: numEscenas = length(Duracion);
 
-% array [1..20] of int: prueba = array1d([0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-
 %------------ VARIABLES ------------
 array [1..numEscenas] of var int: ordenEscenas;
 array [1..numActores, 1..numEscenas] of var {0,1}: reestructuracion;
@@ -48,6 +46,30 @@ constraint forall(i in 1..numEscenas)(
   duracionEscenas[i] = Duracion[ordenEscenas[i]]
 );
 
+%------------ RESTRICCIONES REDUNDANTES ------------
+
+% El punto de inicio de la grabacion de cada uno de los actores debe ser menor o igual a su punto de fin.
+constraint forall(i in 1..numActores)(posInicial([reestructuracion[i, k] | k in 1..numEscenas], 1) <= posFinal([reestructuracion[i, k] | k in 1..numEscenas], numEscenas));
+
+% Cada actor no participa en ninguna escena antes de su primera escena.
+constraint forall(i in 1..numActores)(forall(j in 1..posInicial([reestructuracion[i, k] | k in 1..numEscenas], 1)-1)(reestructuracion[i, j] = 0));
+
+% Cada actor no participa en ninguna escena despues de su ultima escena.
+constraint forall(i in 1..numActores)(forall(j in posFinal([reestructuracion[i, k] | k in 1..numEscenas], numEscenas)+1..numEscenas)(reestructuracion[i, j] = 0));
+
+% Cada actor participa en el mismo numero de escenas antes y despues de cambiar el orden de grabación.
+constraint forall(i in 1..numActores) (sum(j in 1..numEscenas) (Escenas[i,j]) = sum(k in 1..numEscenas) (reestructuracion[i,k]));
+
+% Ambas matrices deben contener las misma cantidad de 1's.
+constraint sum (i in 1..numActores, j in 1..numEscenas)(Escenas[i,j]) = sum(k in 1..numActores, l in 1..numEscenas) (reestructuracion[k,l]);
+
+% La duración de todas las escenas es la mima antes y despues de cambiar el orden de grabación.
+constraint sum (i in 1..numEscenas)(Duracion[i]) = sum(i in 1..numEscenas) (duracionEscenas[i]);
+
+%------------ RESTRICCIONES SIMETRICAS ------------
+
+
+
 %------------ DOMINIOS ------------
 constraint costoTotal >= 0;
 
@@ -59,14 +81,7 @@ constraint forall(i in 1..numEscenas)(
   duracionEscenas[i] > 0
 );
 
-% Costo total
-% constraint forall(i in 1..numActores)(
-%   let {
-%     var int: inicio = posInicial([reestructuracion[i, k] | k in 1..numEscenas], 1);
-%     var int: fin = posFinal([reestructuracion[i, k] | k in 1..numEscenas], numEscenas);
-%     } in duracionEscenas[i] = fin
-% );
-
+%------------ FUNCION OBJETIVO ------------
 constraint costoTotal = sum(i in 1..numActores)(
   let {
     var int: inicio = posInicial([reestructuracion[i, k] | k in 1..numEscenas], 1);
@@ -74,22 +89,22 @@ constraint costoTotal = sum(i in 1..numActores)(
     } in ((sum(j in inicio..fin)(duracionEscenas[j])) * Escenas[i, numEscenas+1])
 );
 
-% constraint forall(i in 1..numActores)(
-%   let {
-%     var int: inicio = posInicial([reestructuracion[i, k] | k in 1..numEscenas], 1);
-%     var int: fin = posFinal([reestructuracion[i, k] | k in 1..numEscenas], numEscenas);
-%     } in duracionEscenas[i] = fin
-% );
 
-%------------ OBJETIVO ------------
-solve minimize costoTotal;
+% Solucion del problema                  
 
-
+solve :: int_search(ordenEscenas, anti_first_fail, indomain_max) minimize costoTotal;
 
 %------------ SALIDA ------------
-% output [show(prueba)]
-% output [show(posInicial([1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], 1)) ++ ", " ++ show(posFinal([1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], numEscenas))]
-% output[show(length(ACTORES))]
-% output["\(ACTORES)\n" ++
-%        "\(length(Duracion))\n" ++
-%        "\(Duracion)"]
+output [if i == numEscenas
+          then "\(ordenEscenas[i])"
+        else "\(ordenEscenas[i]), "
+        endif | i in 1..numEscenas] ++ ["\n"] ++
+       [if j == numEscenas
+          then "\(duracionEscenas[j])"
+        else "\(duracionEscenas[j]), "
+        endif | j in 1..numEscenas] ++ ["\n"] ++
+       ["\(costoTotal)"] ++ ["\n"] ++
+       [if n == numEscenas
+          then "\(reestructuracion[m,n])\n"
+        else "\(reestructuracion[m,n]), "
+        endif | m in 1..numActores, n in 1..numEscenas] ++ ["\n"];
