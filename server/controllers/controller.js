@@ -66,7 +66,7 @@
 
 
 
-import { readJSON, jsontoDzn, exec } from "../utils/utils.js";
+import { readJSON, jsontoDzn, exec, dzntoJson } from "../utils/utils.js";
 import fs from "fs";
 
 
@@ -74,7 +74,7 @@ const basic = readJSON("../data/basic.json");
 const extended = readJSON("../data/extended.json");
 
 const modelPath = '../server/models/PlanTeleBasico.mzn';
-const dataPath = '../server/models/data2.dzn';
+const dataPath = '../server/models/Datosbasico.dzn';
 
 export class WorkPlanController {
   static async getAllBasic(req, res) {
@@ -100,12 +100,12 @@ export class WorkPlanController {
 
     // corre el mzn con el dzn
     const stdout = await exec(`minizinc --solver Gecode ${modelPath} ${dataPath} --time-limit 10000`);
-    console.log("duegio", stdout);
+    //console.log("duegio", stdout.stdout);
 
     // convierte el resultado del mzn a json
     // stdout lo convierte a json
-
     // retorna el json
+    dzntoJson(stdout.stdout,data);
 
     res.send('Procesando...')
   }
