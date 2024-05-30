@@ -39,9 +39,9 @@ export class WorkPlanController {
     // convierte el resultado del mzn a json
     // stdout lo convierte a json
     // retorna el json
-    dzntoJson(stdout.stdout,data);
+    const json = dzntoJson(stdout.stdout,data);
 
-    res.send('Procesando...')
+    res.json(json)
   }
 
   static async runExtendedAlgorithm(req, res) {
@@ -63,8 +63,8 @@ export class WorkPlanController {
     // convierte el resultado del mzn a json
     // stdout lo convierte a json
     // retorna el json
-    dzntoJsonEx(stdout.stdout,data);
+    const json = dzntoJsonEx(stdout.stdout,data);
 
-    res.send('Procesando...')
+    res.json(json)
   }
 }
