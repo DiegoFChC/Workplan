@@ -8,7 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  /* overflow: hidden; */
+  position: relative;
 }
 
 .avatar .icon {
@@ -28,4 +29,23 @@
   padding-right: 10px;
   color: rgb(10, 169, 5);
   font-weight: bold;
+}
+
+.avatar .availability {
+  min-width: 150px;
+  height: 15px;
+  background-color: rgb(66, 1, 1);
+  border-radius: 7px;
+  border: 1px solid rgba(255, 0, 0, 0.488);
+  color: white;
+  font-size: 0.8em;
+  text-align: center;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
 }

@@ -19,6 +19,7 @@ export default function UploadFile({ handleFile, isBasic, reload }) {
       if (isBasic) data = formatToJsonBasic(rtfToTxt(data));
       else data = formatToJsonExtended(rtfToTxt(data));
     }
+    console.log(data)
   
     handleFile(data);
   }
