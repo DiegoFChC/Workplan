@@ -65,23 +65,23 @@ node --watch app.js
 Para ejecutar el archivo PlanTeleBasico.mzn, dentro del IDE de miniZinc debe presionar el boton "Run" y escoger alguno de los siguientes archivos de datos para  ejecutar el modelo sobre  esta instancia 
 del problema: 
 
-PlanTeleBasicoData.dzn
-PlanTeleBasicoData1.dzn
-PlanTeleBasicoData2.dzn
-PlanTeleBasicoData3.dzn
-PlanTeleBasicoData4.dzn
-PlanTeleBasicoData5.dzn
+- PlanTeleBasicoData.dzn
+- PlanTeleBasicoData1.dzn
+- PlanTeleBasicoData2.dzn
+- PlanTeleBasicoData3.dzn
+- PlanTeleBasicoData4.dzn
+- PlanTeleBasicoData5.dzn
 
 ### Problema PlanTeleExtendido
 
 Para ejecutar el archivo PlanTeleExtendido.mzn, dentro del IDE de miniZinc debe presionar el boton "Run" y escoger alguno de los siguientes archivos de datos para ejecutar el modelo sobre  esta instancia del problema: 
 
-PlanTeleExtendidoData.dzn
-PlanTeleExtendidoData1.dzn
-PlanTeleExtendidoData2.dzn
-PlanTeleExtendidoData3.dzn
-PlanTeleExtendidoData4.dzn
-PlanTeleExtendidoData5.dzn
+- PlanTeleExtendidoData.dzn
+- PlanTeleExtendidoData1.dzn
+- PlanTeleExtendidoData2.dzn
+- PlanTeleExtendidoData3.dzn
+- PlanTeleExtendidoData4.dzn
+- PlanTeleExtendidoData5.dzn
 
 En cada uno de los archivos de datos tambien se encuentran las diferentes estrategias de busqueda que se estudiaron, para ejecutar el modelo con alguno de estas estrategias se debe descomentar la linea, cuando se quiera usar la estrategia de busqueda por defecto se deben comentar todas las estrategias.
 
