@@ -2,7 +2,7 @@
 
 Aplicación web para organizar de la mejor manera posible el orden de grabación de las escenas de una telenovela, serie o película.
 
-**Nota:** Si está viendo este Readme en modo local, se recomienda verlo en el GitHub del proyecto, para tener una visualización más clara de lo aquí descrito.
+**Nota:** Si está viendo este Readme en modo local, se recomienda verlo en el GitHub del proyecto, para tener una visualización más clara de lo aquí descrito. ![GitHub - Workplan](https://github.com/DiegoFChC/Workplan)
 
 ## Descripción
 
