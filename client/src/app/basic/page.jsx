@@ -6,11 +6,21 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import UploadFile from "@/components/uploadFile/UploadFile";
 import Loader from "@/components/loader/Loader";
+import { useRouter } from "next/navigation";
 
-let defaultModels = ["Mortal Engines", "The maze runner"];
+let defaultModels = [
+  "Desenfreno de Pasiones",
+  "Hora final",
+  "Maquinas mortales",
+  "El reino",
+  "Halo",
+  "A ciegas",
+];
 
 export default function Basic() {
-  const [modeSelected, setModeSelected] = useState(false);
+  const router = useRouter();
+
+  const [modeSelected, setModeSelected] = useState(true);
   const [modeUploadSelected, setUploadModeSelected] = useState(false);
   const [newScene, setNewScene] = useState(false);
   const [uploadScene, setUploadScene] = useState(false);
@@ -50,11 +60,12 @@ export default function Basic() {
       setUploadScene(false);
       setOptionSelected("");
     } else {
-      setModeSelected(false);
-      setUploadModeSelected(false);
-      setNewScene(false);
-      setUploadScene(false);
-      setOptionSelected("");
+      // setModeSelected(false);
+      // setUploadModeSelected(false);
+      // setNewScene(false);
+      // setUploadScene(false);
+      // setOptionSelected("");
+      router.push("/");
     }
   }
 
@@ -100,7 +111,7 @@ export default function Basic() {
           alt="icon"
           onClick={() => backPage()}
         />
-        {!modeSelected ? (
+        {/* {!modeSelected ? (
           <div className="basic_question1">
             <p className="basic_question_p">
               ¿Quieres crear un escenario propio?
@@ -118,11 +129,11 @@ export default function Basic() {
               <button onClick={() => setModeSelected(true)}>No</button>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
         {modeSelected && !modeUploadSelected && !newScene ? (
           <div className="basic_question1">
             <p className="basic_question_p">
-              ¿Quieres cargar un escenario propio o uno creado por nosotros?
+              ¿Quieres cargar un escenario propio?
             </p>
             <div className="basic_question_buttons">
               <button
@@ -131,9 +142,9 @@ export default function Basic() {
                   setUploadScene(true);
                 }}
               >
-                Propio
+                Si
               </button>
-              <button onClick={() => setUploadModeSelected(true)}>Tuyo</button>
+              <button onClick={() => setUploadModeSelected(true)}>No</button>
             </div>
           </div>
         ) : null}
@@ -197,7 +208,7 @@ export default function Basic() {
       currentSceneSelected != null ? (
         <div className="container_scene">
           <h1 className="film_title">{currentSceneSelected.titulo}</h1>
-          <Scene data={currentSceneSelected} isBasic={true}/>
+          <Scene data={currentSceneSelected} isBasic={true} />
           <button className="procesar" onClick={() => proccessData()}>
             Procesar
           </button>

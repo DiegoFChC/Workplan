@@ -1,22 +1,158 @@
 [
   {
-    "titulo": "Desconocido",
-    "numeroActores": 3,
-    "actores": ["nombre1", "nombre2", "nombre3"],
-    "numeroEscenas": 6,
-    "participacion": [
-      [0, 1, 0, 1, 0, 1],
-      [0, 1, 0, 1, 0, 1],
-      [0, 1, 0, 1, 0, 1]
+    "titulo": "Desenfreno de Pasiones",
+    "numeroActores": 8,
+    "actores": [
+      "Julia",
+      "Juan",
+      "Carlos",
+      "Ana",
+      "Gabriel",
+      "Narciso",
+      "Lina",
+      "Carla"
     ],
-    "precioHora": [3, 5, 7],
-    "duracionEscenas": [1, 2, 3, 4, 5, 6],
-    "ordenEscenas": [1, 2, 3, 4, 5, 6],
-    "numeroParejas": 3,
+    "numeroEscenas": 20,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1],
+      [0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+      [0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "precioHora": [10, 4, 5, 5, 5, 40, 4, 20],
+    "duracionEscenas": [
+      2, 1, 1, 1, 1, 3, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1
+    ],
+    "ordenEscenas": [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+    ],
+    "disponibilidadActores": [0, 0, 23, 0, 80, 10, 5, 100],
+    "numeroParejas": 4,
     "parejas": [
-      ["nombre", "nombre"],
-      ["nombre", "nombre"],
-      ["nombre", "nombre"]
+      ["Julia", "Carlos"],
+      ["Julia", "Ana"],
+      ["Juan", "Carlos"],
+      ["Juan", "Ana"]
     ]
+  },
+  {
+    "titulo": "Hora final",
+    "numeroActores": 6,
+    "actores": ["Julia", "Juan", "Carlos", "Ana", "Gabriel", "Narciso"],
+    "numeroEscenas": 8,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0, 0],
+      [1, 1, 1, 0, 0, 0, 1, 1],
+      [0, 1, 1, 0, 1, 0, 1, 1],
+      [0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 1, 0, 0, 1, 0, 1, 1],
+      [0, 0, 0, 1, 0, 1, 1, 1]
+    ],
+    "precioHora": [10, 4, 2, 7, 3, 20],
+    "duracionEscenas": [2, 1, 1, 1, 1, 3, 1, 1],
+    "ordenEscenas": [1, 2, 3, 4, 5, 6, 7, 8],
+    "disponibilidadActores": [0, 0, 13, 0, 8, 10],
+    "numeroParejas": 2,
+    "parejas": [
+      ["Julia", "Carlos"],
+      ["Narciso", "Juan"]
+    ]
+  },
+  {
+    "titulo": "Maquinas mortales",
+    "numeroActores": 4,
+    "actores": ["Julia", "Juan", "Carlos", "Ana"],
+    "numeroEscenas": 7,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0],
+      [1, 1, 1, 0, 0, 0, 1],
+      [0, 1, 1, 0, 1, 0, 1],
+      [0, 1, 0, 0, 0, 0, 0]
+    ],
+    "precioHora": [10, 4, 5, 5],
+    "duracionEscenas": [2, 1, 1, 1, 1, 3, 1],
+    "ordenEscenas": [1, 2, 3, 4, 5, 6, 7],
+    "disponibilidadActores": [0, 0, 5, 3],
+    "numeroParejas": 1,
+    "parejas": [["Julia", "Carlos"]]
+  },
+  {
+    "titulo": "El reino",
+    "numeroActores": 9,
+    "actores": [
+      "Julia",
+      "Juan",
+      "Carlos",
+      "Ana",
+      "Gabriel",
+      "Narciso",
+      "Lina",
+      "Carla",
+      "Danna"
+    ],
+    "numeroEscenas": 5,
+    "participacion": [
+      [1, 1, 0, 1, 0],
+      [1, 0, 1, 0, 0],
+      [0, 1, 1, 0, 0],
+      [0, 1, 1, 0, 0],
+      [1, 0, 0, 1, 1],
+      [1, 0, 1, 0, 0],
+      [1, 0, 0, 0, 1],
+      [0, 1, 1, 1, 0],
+      [1, 0, 1, 0, 1]
+    ],
+    "precioHora": [10, 4, 2, 5, 6, 3, 8, 2, 7],
+    "duracionEscenas": [2, 4, 1, 3, 6],
+    "ordenEscenas": [1, 2, 3, 4, 5],
+    "disponibilidadActores": [0, 0, 20, 0, 13, 0, 0, 0, 0],
+    "numeroParejas": 2,
+    "parejas": [
+      ["Carla", "Narciso"],
+      ["Narciso", "Gabriel"]
+    ]
+  },
+  {
+    "titulo": "Halo",
+    "numeroActores": 5,
+    "actores": ["Julia", "Juan", "Carlos", "Ana", "Gabriel"],
+    "numeroEscenas": 10,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0, 0, 1, 0],
+      [1, 1, 1, 0, 0, 0, 1, 0, 0, 1],
+      [0, 1, 0, 0, 1, 0, 1, 1, 0, 1],
+      [0, 0, 0, 1, 1, 1, 0, 0, 1, 0],
+      [1, 1, 0, 0, 1, 0, 0, 1, 1, 0]
+    ],
+    "precioHora": [10, 4, 5, 2, 6],
+    "duracionEscenas": [2, 1, 1, 1, 1, 3, 1, 4, 1, 1],
+    "ordenEscenas": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "disponibilidadActores": [10, 0, 13, 0, 0],
+    "numeroParejas": 2,
+    "parejas": [
+      ["Julia", "Carlos"],
+      ["Gabriel", "Juan"]
+    ]
+  },
+  {
+    "titulo": "A ciegas",
+    "numeroActores": 3,
+    "actores": ["Julia", "Juan", "Carlos"],
+    "numeroEscenas": 15,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1],
+      [0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1],
+      [1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0]
+    ],
+    "precioHora": [10, 5, 6],
+    "duracionEscenas": [4, 1, 2, 1, 1, 3, 1, 2, 12, 1, 1, 2, 1, 2],
+    "ordenEscenas": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "disponibilidadActores": [0, 20, 0],
+    "numeroParejas": 1,
+    "parejas": [["Julia", "Carlos"]]
   }
 ]

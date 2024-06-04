@@ -171,7 +171,7 @@ constraint tiempoNorm = (tiempoEncuentro*100 div sumaTiempos*100)*10;
 %constraint tiempoNorm = (tiempoEncuentro);
 
 % Solución del problema
-ann: search_ann = int_search(ordenEscenas, anti_first_fail, indomain_max);
+ann: search_ann;
 
 solve :: search_ann minimize  costoNorm + tiempoNorm;
                              

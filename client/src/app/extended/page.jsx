@@ -6,11 +6,21 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import UploadFile from "@/components/uploadFile/UploadFile";
 import Loader from "@/components/loader/Loader";
+import { useRouter } from "next/navigation";
 
-let defaultModels = ["Desconocido"];
+let defaultModels = [
+  "Desenfreno de Pasiones",
+  "Hora final",
+  "Maquinas mortales",
+  "El reino",
+  "Halo",
+  "A ciegas",
+];
 
 export default function Extended() {
-  const [modeSelected, setModeSelected] = useState(false);
+  const router = useRouter();
+
+  const [modeSelected, setModeSelected] = useState(true);
   const [modeUploadSelected, setUploadModeSelected] = useState(false);
   const [newScene, setNewScene] = useState(false);
   const [uploadScene, setUploadScene] = useState(false);
@@ -33,7 +43,9 @@ export default function Extended() {
     if (optionSelected == "" || optionSelected == "Sin selección") {
       setOptionSelected("Otro");
     } else {
-      let myScene = extendedScenes.filter((item) => item.titulo == optionSelected);
+      let myScene = extendedScenes.filter(
+        (item) => item.titulo == optionSelected
+      );
       setCurrentSceneSelected(myScene[0]);
 
       if (optionSelected != "" && optionSelected != "Sin selección") {
@@ -50,16 +62,18 @@ export default function Extended() {
       setUploadScene(false);
       setOptionSelected("");
     } else {
-      setModeSelected(false);
-      setUploadModeSelected(false);
-      setNewScene(false);
-      setUploadScene(false);
-      setOptionSelected("");
+      // setModeSelected(false);
+      // setUploadModeSelected(false);
+      // setNewScene(false);
+      // setUploadScene(false);
+      // setOptionSelected("");
+      router.push("/");
     }
   }
 
   async function proccessData() {
     let dataToSend = currentSceneSelected;
+    console.log(dataToSend);
     setLoading(true);
     fetch("http://localhost:1234/extended", {
       method: "POST",
@@ -88,7 +102,7 @@ export default function Extended() {
   return (
     <div className="Extended">
       {loading ? <Loader /> : null}
-      <h1 className="extended_title">Plan de trabajo básico</h1>
+      <h1 className="extended_title">Plan de trabajo extendido</h1>
       <p className="extended_paragraph">
         En esta sección puedes cargar un escenario creado con anterioridad o en
         su defecto, crear tu propio escenario.
@@ -122,7 +136,7 @@ export default function Extended() {
         {modeSelected && !modeUploadSelected && !newScene ? (
           <div className="extended_question1">
             <p className="extended_question_p">
-              ¿Quieres cargar un escenario propio o uno creado por nosotros?
+              ¿Quieres cargar un escenario propio?
             </p>
             <div className="extended_question_buttons">
               <button
@@ -131,9 +145,9 @@ export default function Extended() {
                   setUploadScene(true);
                 }}
               >
-                Propio
+                Si
               </button>
-              <button onClick={() => setUploadModeSelected(true)}>Tuyo</button>
+              <button onClick={() => setUploadModeSelected(true)}>No</button>
             </div>
           </div>
         ) : null}
@@ -211,7 +225,7 @@ export default function Extended() {
       currentSceneSelected != null ? (
         <div className="container_scene">
           <h1 className="film_title">{modelResult.titulo}</h1>
-          <Scene data={modelResult} isBasic={false}/>
+          <Scene data={modelResult} isBasic={false} />
           <p className="p_result">
             El costo mínimo encontrado es de{" "}
             <span>$ {modelResult.costo * 100000}</span>

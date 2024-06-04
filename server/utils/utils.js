@@ -98,7 +98,9 @@ export function dzntoJson(input, data) {
 }
 
 export function dzntoJsonEx(input, data) {
+  console.log("input", input)
   const keys = input.split('\n');
+  console.log("Resultado", keys)
   //console.log("keys:",keys);
   const orden = keys[0].split(',').map(Number);
   //console.log("Orden:",orden);

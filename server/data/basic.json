@@ -1,40 +1,126 @@
 [
   {
-    "titulo": "The maze runner",
-    "numeroActores": 3,
-    "actores": ["Dylan O'Brien", "Ki Hong Lee", "Kaya Scodelario"],
-    "numeroEscenas": 6,
-    "participacion": [
-      [0, 1, 0, 1, 0, 1],
-      [1, 0, 1, 1, 0, 0],
-      [0, 1, 0, 0, 1, 0]
+    "titulo": "Desenfreno de Pasiones",
+    "numeroActores": 8,
+    "actores": [
+      "Julia",
+      "Juan",
+      "Carlos",
+      "Ana",
+      "Gabriel",
+      "Narciso",
+      "Lina",
+      "Carla"
     ],
-    "precioHora": [3, 5, 7],
-    "duracionEscenas": [1, 2, 3, 4, 5, 6],
-    "ordenEscenas": [1, 2, 3, 4, 5, 6]
+    "numeroEscenas": 20,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1],
+      [0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+      [0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+      [0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "precioHora": [10, 4, 5, 5, 5, 40, 4, 20],
+    "duracionEscenas": [
+      2, 1, 1, 1, 1, 3, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1
+    ],
+    "ordenEscenas": [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+    ]
   },
   {
-    "titulo": "Mortal Engines",
+    "titulo": "Hora final",
     "numeroActores": 6,
-    "actores": [
-      "Robert Sheehan",
-      "Hera Hilmar",
-      "Hugo Weaving",
-      "Leila George",
-      "Stephen Lang",
-      "Jihae"
+    "actores": ["Julia", "Juan", "Carlos", "Ana", "Gabriel", "Narciso"],
+    "numeroEscenas": 8,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0, 0],
+      [1, 1, 1, 0, 0, 0, 1, 1],
+      [0, 1, 1, 0, 1, 0, 1, 1],
+      [0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 1, 0, 0, 1, 0, 1, 1],
+      [0, 0, 0, 1, 0, 1, 1, 1]
     ],
+    "precioHora": [10, 4, 2, 7, 3, 20],
+    "duracionEscenas": [2, 1, 1, 1, 1, 3, 1, 1],
+    "ordenEscenas": [1, 2, 3, 4, 5, 6, 7, 8]
+  },
+  {
+    "titulo": "Maquinas mortales",
+    "numeroActores": 4,
+    "actores": ["Julia", "Juan", "Carlos", "Ana"],
+    "numeroEscenas": 7,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0],
+      [1, 1, 1, 0, 0, 0, 1],
+      [0, 1, 1, 0, 1, 0, 1],
+      [0, 1, 0, 0, 0, 0, 0]
+    ],
+    "precioHora": [10, 4, 5, 5],
+    "duracionEscenas": [2, 1, 1, 1, 1, 3, 1],
+    "ordenEscenas": [1, 2, 3, 4, 5, 6, 7]
+  },
+  {
+    "titulo": "El reino",
+    "numeroActores": 9,
+    "actores": [
+      "Julia",
+      "Juan",
+      "Carlos",
+      "Ana",
+      "Gabriel",
+      "Narciso",
+      "Lina",
+      "Carla",
+      "Danna"
+    ],
+    "numeroEscenas": 5,
+    "participacion": [
+      [1, 1, 0, 1, 0],
+      [1, 0, 1, 0, 0],
+      [0, 1, 1, 0, 0],
+      [0, 1, 1, 0, 0],
+      [1, 0, 0, 1, 1],
+      [1, 0, 1, 0, 0],
+      [1, 0, 0, 0, 1],
+      [0, 1, 1, 1, 0],
+      [1, 0, 1, 0, 1]
+    ],
+    "precioHora": [10, 4, 2, 5, 6, 3, 8, 2, 7],
+    "duracionEscenas": [2, 4, 1, 3, 6],
+    "ordenEscenas": [1, 2, 3, 4, 5]
+  },
+  {
+    "titulo": "Halo",
+    "numeroActores": 5,
+    "actores": ["Julia", "Juan", "Carlos", "Ana", "Gabriel"],
     "numeroEscenas": 10,
     "participacion": [
-      [0, 1, 0, 1, 0, 1, 0, 0, 0, 0],
-      [1, 0, 0, 1, 0, 0, 1, 0, 1, 0],
-      [0, 1, 0, 0, 1, 0, 0, 1, 0, 0],
-      [0, 1, 0, 1, 0, 1, 0, 0, 0, 1],
-      [1, 0, 1, 1, 0, 0, 1, 0, 1, 0],
-      [0, 1, 0, 0, 1, 0, 0, 1, 0, 0]
+      [1, 1, 1, 1, 0, 1, 0, 0, 1, 0],
+      [1, 1, 1, 0, 0, 0, 1, 0, 0, 1],
+      [0, 1, 0, 0, 1, 0, 1, 1, 0, 1],
+      [0, 0, 0, 1, 1, 1, 0, 0, 1, 0],
+      [1, 1, 0, 0, 1, 0, 0, 1, 1, 0]
     ],
-    "precioHora": [3, 5, 7, 1, 4, 6],
-    "duracionEscenas": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "precioHora": [10, 4, 5, 2, 6],
+    "duracionEscenas": [2, 1, 1, 1, 1, 3, 1, 4, 1, 1],
     "ordenEscenas": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  },
+  {
+    "titulo": "A ciegas",
+    "numeroActores": 3,
+    "actores": ["Julia", "Juan", "Carlos"],
+    "numeroEscenas": 15,
+    "participacion": [
+      [1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1],
+      [0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1],
+      [1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0]
+    ],
+    "precioHora": [10, 5, 6],
+    "duracionEscenas": [4, 1, 2, 1, 1, 3, 1, 2, 12, 1, 1, 2, 1, 2],
+    "ordenEscenas": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
   }
 ]
