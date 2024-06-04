@@ -9,7 +9,7 @@ int: numActores = length(ACTORES);
 int: numEscenas = length(Duracion);
 
 
-array[int, int] of int: Disponibilidad;
+array[1..numActores, 1..2] of int: Disponibilidad;
 array[int, int] of int: Evitar;
 
 int: numEvitar = (length(Evitar) div 2);
@@ -20,8 +20,10 @@ array [1..numEscenas] of var int: ordenEscenas;
 array [1..numActores, 1..numEscenas] of var {0,1}: reestructuracion;
 array [1..numEscenas] of var int: duracionEscenas;
 var int: costoTotal;
+
 array[ACTORES] of var int: tiempoEnSet;
 array[1..numEvitar] of var int: encuentros; % arreglo de que se encontraron
+
 var int: tiempoEncuentro; % tiempo que transcurrio en el que actores que se querian evitar, se encontraron
 
 var int: valorCostoMaximo; % Valor del costo maximo calculado de simular que todos los actores participan en todas las obras
@@ -54,7 +56,7 @@ function var bool: seCruza(var int: pos1x,var int: pos1y, var int: pos2x,var int
  if (pos1x >= pos2x /\ pos1x <= pos2y) \/ (pos2x >= pos1x /\ pos2x <= pos1y)
  then true
  else false endif;
-
+ 
 %------------ RESTRICCIONES ------------
 % Todas las escenas son diferentes
 constraint alldifferent(ordenEscenas);
@@ -79,7 +81,10 @@ constraint forall(a in ACTORES) (
 
 % Verificar que el tiempo en el set sea menor o igual a la disponibilidad
 constraint forall(a in ACTORES) (
-    (Disponibilidad[a, 2] > 0 -> tiempoEnSet[a] <= Disponibilidad[a, 2])
+     if Disponibilidad[a, 2] > 0 
+     then tiempoEnSet[a] <= Disponibilidad[a, 2] 
+     else true 
+     endif
 );
 
  % Se verifica si dos actores que no se quieren ver coinciden, si coinciden se guarda las horas que coincidieron
@@ -135,6 +140,7 @@ constraint sum (i in 1..numEscenas)(Duracion[i]) = sum(i in 1..numEscenas) (dura
 
 %------------ RESTRICCIONES SIMETRICAS ------------
 
+constraint lex_greatereq(ordenEscenas, reverse(ordenEscenas));
 
 %------------ DOMINIOS ------------
 constraint costoTotal >= 0;
@@ -153,6 +159,7 @@ constraint sumaCostos >= 0;
 constraint sumaTiempos >= 0;
 constraint costoNorm >= 0;
 constraint tiempoNorm >= 0;
+constraint forall(i in ACTORES)(tiempoEnSet[i] > 0);
 
 % Costo total
 constraint costoTotal = sum(i in 1..numActores)(
@@ -165,7 +172,7 @@ constraint costoTotal = sum(i in 1..numActores)(
 %------------ OBJETIVO ------------
 
 constraint costoNorm = (costoTotal*100 div valorCostoMaximo*100)*90;
-constraint tiempoNorm = (tiempoEncuentro*100 div sumaTiempos*100)*10;
+constraint tiempoNorm = (tiempoEncuentro*100 div (numActores-1)*(numActores)*sumaTiempos*100)*10;
 
 %constraint costoNorm = (costoTotal);
 %constraint tiempoNorm = (tiempoEncuentro);

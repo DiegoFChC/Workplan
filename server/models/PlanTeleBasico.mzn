@@ -9,7 +9,7 @@ int: numActores = length(ACTORES);
 int: numEscenas = length(Duracion);
 
 %------------ VARIABLES ------------
-array [1..numEscenas] of var int: ordenEscenas;
+array [1..numEscenas] of var 1..numEscenas: ordenEscenas;
 array [1..numActores, 1..numEscenas] of var {0,1}: reestructuracion;
 array [1..numEscenas] of var int: duracionEscenas;
 var int: costoTotal;
@@ -48,6 +48,9 @@ constraint forall(i in 1..numEscenas)(
 
 %------------ RESTRICCIONES REDUNDANTES ------------
 
+% Ambas matrices deben contener las misma cantidad de 1's.
+constraint sum (i in 1..numActores, j in 1..numEscenas)(Escenas[i,j]) = sum(k in 1..numActores, l in 1..numEscenas) (reestructuracion[k,l]);
+
 % El punto de inicio de la grabacion de cada uno de los actores debe ser menor o igual a su punto de fin.
 constraint forall(i in 1..numActores)(posInicial([reestructuracion[i, k] | k in 1..numEscenas], 1) <= posFinal([reestructuracion[i, k] | k in 1..numEscenas], numEscenas));
 
@@ -60,22 +63,15 @@ constraint forall(i in 1..numActores)(forall(j in posFinal([reestructuracion[i, 
 % Cada actor participa en el mismo numero de escenas antes y despues de cambiar el orden de grabación.
 constraint forall(i in 1..numActores) (sum(j in 1..numEscenas) (Escenas[i,j]) = sum(k in 1..numEscenas) (reestructuracion[i,k]));
 
-% Ambas matrices deben contener las misma cantidad de 1's.
-constraint sum (i in 1..numActores, j in 1..numEscenas)(Escenas[i,j]) = sum(k in 1..numActores, l in 1..numEscenas) (reestructuracion[k,l]);
-
 % La duración de todas las escenas es la mima antes y despues de cambiar el orden de grabación.
 constraint sum (i in 1..numEscenas)(Duracion[i]) = sum(i in 1..numEscenas) (duracionEscenas[i]);
 
 %------------ RESTRICCIONES SIMETRICAS ------------
 
-
+%constraint lex_greatereq(ordenEscenas, reverse(ordenEscenas));
 
 %------------ DOMINIOS ------------
 constraint costoTotal >= 0;
-
-constraint forall(i in 1..numEscenas)(
-  ordenEscenas[i] > 0 /\ ordenEscenas[i] <= numEscenas
-);
 
 constraint forall(i in 1..numEscenas)(
   duracionEscenas[i] > 0
@@ -90,7 +86,7 @@ constraint costoTotal = sum(i in 1..numActores)(
 );
 
 
-% Solucion del problema                  
+% Solucion del problema               
 
 solve :: int_search(ordenEscenas, anti_first_fail, indomain_max) minimize costoTotal;
 
