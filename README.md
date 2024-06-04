@@ -48,6 +48,7 @@ node --watch app.js
 ```
 ## Autores ✒️
 
-- **Brayan Diaz C** - _Trabajo inicial_ - [Brayan Diaz C](https://github.com/brayandiazc)
-
-Mira también la lista de [contribuidores](https://github.com/your/project/contributors) que han participado en este proyecto.
+- **Alejandro Escobar Tafurt** - _Desarrollo de modelos_ - [Alejandro Escobar](https://github.com/alejandro19-19)
+- **Alejandro Peñaranda Agudelo** - _Desarrollo de modelos_ - [Alejandro Peñaranda](https://github.com/alejandropenaranda)
+- **Diego Fernando Chaverra Castillo** - _Desarrollo de modelos_, _FrontEnd_ - [Diego Chaverra](https://github.com/DiegoFChC)
+- **Juan Camilo Santa Gomez** - _Desarrollo de modelos_, _BackEnd_ - [Juan Santa](https://github.com/santa51107HD)
