@@ -17,15 +17,15 @@ En este proyecto se considerana dos modelos, uno básico, el cual minimiza el co
 
 Inicio
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/DiegoFChC/Workplan/blob/develop/client/public/Pantalla%201.png)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/DiegoFChC/Workplan/blob/main/client/public/Pantalla%201.png)
 
 Problema Básico
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/DiegoFChC/Workplan/blob/develop/client/public/Pantalla%202.png)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/DiegoFChC/Workplan/blob/main/client/public/Pantalla%202.png)
 
 Problema Extendido
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/DiegoFChC/Workplan/blob/develop/client/public/Pantalla%203.png)
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://github.com/DiegoFChC/Workplan/blob/main/client/public/Pantalla%203.png)
 
 ## Empezando 🚀
 
