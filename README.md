@@ -2,6 +2,8 @@
 
 Aplicación web para organizar de la mejor manera posible el orden de grabación de las escenas de una telenovela, serie o película.
 
+**Nota:** Si está viendo este Readme en modo local, se recomienda verlo en el GitHub del proyecto, para tener una visualización más clara de lo aquí descrito.
+
 ## Descripción
 
 Esta es una aplicación basada en Programación por Restricciones, en la cual se trata de minimizar el costo de producción de una telenovela, serie o película, en términos de la organización de grabación de las escenas. Los principales elementos tenidos en cuenta son:
