@@ -25,7 +25,10 @@ export class WorkPlanController {
     const dznContent = jsontoDzn(data)
     fs.writeFileSync("./models/DatosBasico.dzn", dznContent);
 
-    const stdout = await exec(`minizinc --solver Gecode ${modelPath} ${dataPath} --time-limit 30000`);
+    // const solver = "OR Tools CP-SAT"
+    const solver = "Gecode"
+
+    const stdout = await exec(`minizinc --solver ${solver} ${modelPath} ${dataPath} --time-limit 30000`);
 
     const json = dzntoJson(stdout.stdout,data);
 
