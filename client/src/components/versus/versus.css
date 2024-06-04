@@ -48,4 +48,24 @@
     z-index: 200;
     padding-left: 10px;
   }
+
+  .hour {
+    min-width: 150px;
+    height: 15px;
+    background-color: rgb(66, 1, 1);
+    border-radius: 7px;
+    border: 1px solid rgba(255, 0, 0);
+    color: white;
+    font-size: 0.8em;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 201;
+  }
 }
