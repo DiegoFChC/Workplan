@@ -4,7 +4,7 @@ import "./scene.css";
 import Avatar from "../avatar/Avatar";
 import Versus from "../versus/Versus";
 
-export default function Scene({ data, isBasic }) {
+export default function Scene({ data, isBasic, isResultExtended }) {
   return (
     <>
       <div className="scene_actors">
@@ -45,6 +45,8 @@ export default function Scene({ data, isBasic }) {
                   <Versus
                     key={item}
                     names={item}
+                    isResult={isResultExtended}
+                    hours={data.encuentros != null ? data.encuentros[index] : null}
                   />
                 );
               })}

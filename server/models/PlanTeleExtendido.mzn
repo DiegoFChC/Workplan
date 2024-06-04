@@ -191,6 +191,10 @@ output [if i == numEscenas
           then "\(duracionEscenas[j])"
         else "\(duracionEscenas[j]), "
         endif | j in 1..numEscenas] ++ ["\n"] ++
+       [if k == numEvitar
+          then "\(encuentros[k])"
+        else "\(encuentros[k]), "
+        endif | k in 1..numEvitar] ++ ["\n"] ++
        ["\(costoTotal)"] ++ ["\n"] ++
        [if n == numEscenas
           then "\(reestructuracion[m,n])\n"

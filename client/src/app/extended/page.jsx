@@ -211,7 +211,7 @@ export default function Extended() {
       currentSceneSelected != null ? (
         <div className="container_scene">
           <h1 className="film_title">{currentSceneSelected.titulo}</h1>
-          <Scene data={currentSceneSelected} isBasic={false} />
+          <Scene data={currentSceneSelected} isBasic={false} isResultExtended={false} />
           <button className="procesar" onClick={() => proccessData()}>
             Procesar
           </button>
@@ -225,7 +225,7 @@ export default function Extended() {
       currentSceneSelected != null ? (
         <div className="container_scene">
           <h1 className="film_title">{modelResult.titulo}</h1>
-          <Scene data={modelResult} isBasic={false} />
+          <Scene data={modelResult} isBasic={false} isResultExtended={true}/>
           <p className="p_result">
             El costo mínimo encontrado es de{" "}
             <span>$ {modelResult.costo * 100000}</span>

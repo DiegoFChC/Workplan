@@ -98,19 +98,19 @@ export function dzntoJson(input, data) {
 }
 
 export function dzntoJsonEx(input, data) {
-  console.log("input", input)
   const keys = input.split('\n');
-  console.log("Resultado", keys)
   //console.log("keys:",keys);
   const orden = keys[0].split(',').map(Number);
   //console.log("Orden:",orden);
   const duracion = keys[1].split(',').map(Number);
   //console.log("Duracion:",duracion);
-  const costo = parseInt(keys[2]);
+  const encuentros = keys[2].split(',').map(Number);
+  //console.log("Duracion:",duracion);
+  const costo = parseInt(keys[3]);
   //console.log("Costo:",costo);
 
   let participacion = []
-  let count = 3;
+  let count = 4;
   let numeroActoresIter = data.numeroActores;
   while (numeroActoresIter > 0) {
     let escenaArray = keys[count].split(',').map(Number);
@@ -131,6 +131,7 @@ export function dzntoJsonEx(input, data) {
     "disponibilidadActores":data.disponibilidadActores,
     "parejas":data.parejas,
     "costo": costo,
+    "encuentros": encuentros,
   }
 
   console.log("Json:",json)
