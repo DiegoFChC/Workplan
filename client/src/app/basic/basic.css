@@ -2,7 +2,6 @@
   width: 100%;
   min-height: 100vh;
   padding-top: 100px;
-  padding-bottom: 50px;
   background-image: linear-gradient(
     to bottom,
     #051937,
@@ -34,7 +33,7 @@
 }
 
 .Basic .container_questions {
-  width: 1000px;
+  width: 1100px;
   margin-bottom: 50px;
   padding: 60px;
   padding-top: 80px;
@@ -135,8 +134,9 @@
 }
 
 .Basic .container_scene {
-  width: 1000px;
+  width: 1100px;
   padding: 50px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,5 +148,34 @@
 
   .film_title {
     color: rgb(243, 240, 250);
+  }
+
+  .p_result {
+    width: 450px;
+    color: white;
+    font-weight: 200;
+    font-size: 1.6em;
+    text-align: center;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+.Basic .procesar {
+  width: 200px;
+  height: 50px;
+  color: white;
+  font-weight: 300;
+  font-size: 1.3em;
+  background: rgba(7, 0, 65, 0.335);
+  border: 1px solid rgb(39, 53, 176);
+  border-radius: 10px;
+  transition: background .3s ease;
+
+  &:hover {
+    background: rgba(13, 20, 87, 0.471);
+    cursor: pointer;
   }
 }

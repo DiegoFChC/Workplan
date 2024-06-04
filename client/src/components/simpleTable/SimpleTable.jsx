@@ -37,7 +37,7 @@ export default function Table({ title, data }) {
           className="item_name"
           style={{ gridRowStart: `${2}`, gridRowEnd: `${3}` }}
         >
-          Duración de cada escena
+          Duración escenas
         </p>
         {data.duracionEscenas.map((item) => {
           j++;

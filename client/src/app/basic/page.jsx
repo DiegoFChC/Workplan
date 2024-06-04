@@ -1,43 +1,104 @@
 "use client";
 import "./basic.css";
 import Scene from "@/components/scene/Scene";
-import ejemploData from "../../dataModels/basic/data2.json";
 import icon from "../../../public/back.png";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import UploadFile from "@/components/uploadFile/UploadFile";
+import Loader from "@/components/loader/Loader";
+import { useRouter } from "next/navigation";
 
-let defaultModels = ["Mortal Engines", "Mad Max"];
+let defaultModels = [
+  "Desenfreno de Pasiones",
+  "Hora final",
+  "Maquinas mortales",
+  "El reino",
+  "Halo",
+  "A ciegas",
+];
 
 export default function Basic() {
-  const [modeSelected, setModeSelected] = useState(false);
+  const router = useRouter();
+
+  const [modeSelected, setModeSelected] = useState(true);
   const [modeUploadSelected, setUploadModeSelected] = useState(false);
   const [newScene, setNewScene] = useState(false);
   const [uploadScene, setUploadScene] = useState(false);
   const [optionSelected, setOptionSelected] = useState("");
   const [data, setData] = useState(false);
+  const [basicScenes, setBasicScenes] = useState(null);
+  const [currentSceneSelected, setCurrentSceneSelected] = useState(null);
+  const [modelResult, setModelResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  function loadData() {
-    if (optionSelected != "" && optionSelected != "Sin selección") {
-      setData(true);
+  useEffect(() => {
+    fetch("http://localhost:1234/basic")
+      .then((res) => res.json())
+      .then((res) => {
+        setBasicScenes(res);
+      });
+  }, []);
+
+  function searchScene() {
+    if (optionSelected == "" || optionSelected == "Sin selección") {
+      setOptionSelected("Otro");
+    } else {
+      let myScene = basicScenes.filter((item) => item.titulo == optionSelected);
+      setCurrentSceneSelected(myScene[0]);
+
+      if (optionSelected != "" && optionSelected != "Sin selección") {
+        setData(true);
+      }
     }
   }
 
   function backPage() {
+    setOptionSelected("");
+    setModelResult(null);
     if (modeSelected && modeUploadSelected) {
       setUploadModeSelected(false);
       setUploadScene(false);
       setOptionSelected("");
     } else {
-      setModeSelected(false);
-      setUploadModeSelected(false);
-      setNewScene(false);
-      setUploadScene(false);
-      setOptionSelected("");
+      // setModeSelected(false);
+      // setUploadModeSelected(false);
+      // setNewScene(false);
+      // setUploadScene(false);
+      // setOptionSelected("");
+      router.push("/");
     }
+  }
+
+  async function proccessData() {
+    let dataToSend = currentSceneSelected;
+    setLoading(true);
+    fetch("http://localhost:1234/basic", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(dataToSend),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setModelResult(res);
+        setLoading(false);
+      });
+  }
+
+  async function handleUploadFile(data) {
+    setData(true);
+    setCurrentSceneSelected(data);
+  }
+
+  function reloadFile() {
+    setOptionSelected("");
+    setModelResult(null);
   }
 
   return (
     <div className="Basic">
+      {loading ? <Loader /> : null}
       <h1 className="basic_title">Plan de trabajo básico</h1>
       <p className="basic_paragraph">
         En esta sección puedes cargar un escenario creado con anterioridad o en
@@ -50,7 +111,7 @@ export default function Basic() {
           alt="icon"
           onClick={() => backPage()}
         />
-        {!modeSelected ? (
+        {/* {!modeSelected ? (
           <div className="basic_question1">
             <p className="basic_question_p">
               ¿Quieres crear un escenario propio?
@@ -61,17 +122,18 @@ export default function Basic() {
                   setModeSelected(true);
                   setNewScene(true);
                 }}
+                disabled
               >
                 Si
               </button>
               <button onClick={() => setModeSelected(true)}>No</button>
             </div>
           </div>
-        ) : null}
+        ) : null} */}
         {modeSelected && !modeUploadSelected && !newScene ? (
           <div className="basic_question1">
             <p className="basic_question_p">
-              ¿Quieres cargar un escenario propio o uno creado por nosotros?
+              ¿Quieres cargar un escenario propio?
             </p>
             <div className="basic_question_buttons">
               <button
@@ -80,9 +142,9 @@ export default function Basic() {
                   setUploadScene(true);
                 }}
               >
-                Propio
+                Si
               </button>
-              <button onClick={() => setUploadModeSelected(true)}>Tuyo</button>
+              <button onClick={() => setUploadModeSelected(true)}>No</button>
             </div>
           </div>
         ) : null}
@@ -95,9 +157,17 @@ export default function Basic() {
         ) : null}
         {uploadScene ? (
           <div className="basic_question2">
-            <p className="basic_question_p">
+            <UploadFile
+              handleFile={handleUploadFile}
+              isBasic={true}
+              reload={reloadFile}
+            />
+            <div className="basic_question_buttons">
+              <button onClick={() => searchScene()}>Cargar</button>
+            </div>
+            {/* <p className="basic_question_p">
               Esperate que no está desarrollado
-            </p>
+            </p> */}
           </div>
         ) : null}
         {modeSelected && modeUploadSelected && !newScene && !uploadScene ? (
@@ -110,6 +180,7 @@ export default function Basic() {
                 name="options_escenes"
                 id="option_escenes"
                 onChange={(e) => {
+                  setModelResult(null);
                   setOptionSelected(e.target.value);
                   setData(false);
                 }}
@@ -125,15 +196,37 @@ export default function Basic() {
               </select>
             </div>
             <div className="basic_question_buttons">
-              <button onClick={() => loadData()}>Cargar</button>
+              <button onClick={() => searchScene()}>Cargar</button>
             </div>
           </div>
         ) : null}
       </div>
-      {data && optionSelected != "Sin selección" && optionSelected != "" ? (
+      {data &&
+      optionSelected != "Sin selección" &&
+      optionSelected != "" &&
+      basicScenes != null &&
+      currentSceneSelected != null ? (
         <div className="container_scene">
-          <h1 className="film_title">{ejemploData.titulo}</h1>
-          <Scene data={ejemploData} />
+          <h1 className="film_title">{currentSceneSelected.titulo}</h1>
+          <Scene data={currentSceneSelected} isBasic={true} />
+          <button className="procesar" onClick={() => proccessData()}>
+            Procesar
+          </button>
+        </div>
+      ) : null}
+      {data &&
+      modelResult &&
+      optionSelected != "Sin selección" &&
+      optionSelected != "" &&
+      basicScenes != null &&
+      currentSceneSelected != null ? (
+        <div className="container_scene">
+          <h1 className="film_title">{modelResult.titulo}</h1>
+          <Scene data={modelResult} isBasic={true} />
+          <p className="p_result">
+            El costo mínimo encontrado es de{" "}
+            <span>$ {modelResult.costo * 100000}</span>
+          </p>
         </div>
       ) : null}
     </div>
